@@ -1,5 +1,6 @@
 package com.parabank.parasoft.pages;
 
+import com.parabank.parasoft.util.BatchThirteenUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -14,11 +15,13 @@ public class TransferFundsPage extends BasePage {
     }
 
     public TransferFundsPage selectFromAccount(int index) {
+        BatchThirteenUtil.waitForDomStable();
         getSelect(By.id("fromAccountId")).selectByIndex(index);
         return this;
     }
 
     public TransferFundsPage selectToAccount(int index) {
+        BatchThirteenUtil.waitForDomStable();
         getSelect(By.id("toAccountId")).selectByIndex(index);
         return this;
     }
