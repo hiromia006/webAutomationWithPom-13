@@ -26,7 +26,7 @@ public abstract class Page {
 
     public abstract String getText(By selector);
 
-    public abstract void click(By selector);
+    public abstract void clickElement(By selector);
 
     public abstract Select getSelect(By selector);
 

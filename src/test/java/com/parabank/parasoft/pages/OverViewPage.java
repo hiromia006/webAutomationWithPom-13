@@ -11,4 +11,9 @@ public class OverViewPage extends BasePage {
     public boolean isLogOutLinkDisplayed() {
         return getWebElementSize(By.cssSelector("a[href='logout.htm']")) > 0;
     }
+
+    public OpenNewAccountPage clickOpenNewAccountLink() {
+        clickElement(By.cssSelector("a[href='openaccount.htm']"));
+        return goTo(OpenNewAccountPage.class);
+    }
 }

@@ -45,7 +45,7 @@ public class BasePage extends Page {
     }
 
     @Override
-    public void click(By selector) {
+    public void clickElement(By selector) {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(getWebElement(selector))).click();
         } catch (NoSuchElementException e) {
