@@ -19,22 +19,22 @@ public class LoginPage extends BasePage {
     }
 
     public RegistrationPage clickRegisterLink() {
-        click(By.linkText("Register"));
+        clickElement(By.linkText("Register"));
         return goTo(RegistrationPage.class);
     }
 
     public LookUpPage clickForgotLoginInfoLink() {
-        click(By.linkText("Forgot login info?"));
+        clickElement(By.linkText("Forgot login info?"));
         return goTo(LookUpPage.class);
     }
 
     public OverViewPage clickLoginBtn() {
-        click(By.cssSelector("input[value='Log In']"));
+        clickElement(By.cssSelector("input[value='Log In']"));
         return goTo(OverViewPage.class);
     }
 
     public LoginPage clickLoginForFail() {
-        click(By.cssSelector("input[value='Log In']"));
+        clickElement(By.cssSelector("input[value='Log In']"));
         return this;
     }
 

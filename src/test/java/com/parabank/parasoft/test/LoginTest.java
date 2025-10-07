@@ -37,7 +37,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void loginWithOutUsernameShouldFail() {
         LoginPage lp = pg.goTo(LoginPage.class)
-                .fillPassword("ssasasa")
+                .fillPassword(getPassword())
                 .clickLoginForFail();
         Assert.assertTrue(lp.isLoginErrorMessageDisplayed());
 
@@ -46,7 +46,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void loginWithOutPasswordShouldFail() {
         LoginPage lp = pg.goTo(LoginPage.class)
-                .fillUsername("sasadsa")
+                .fillUsername(getUsername())
                 .clickLoginForFail();
         Assert.assertTrue(lp.isLoginErrorMessageDisplayed());
 
@@ -56,8 +56,8 @@ public class LoginTest extends BaseTest {
     public void loginShouldSucceed() {
         LoginPage lPage = pg.goTo(LoginPage.class);
         lPage = lPage
-                .fillUsername("sqa1")
-                .fillPassword("sqa1");
+                .fillUsername(getUsername())
+                .fillPassword(getPassword());
 
         OverViewPage viewPage = lPage
                 .clickLoginBtn();
@@ -67,8 +67,8 @@ public class LoginTest extends BaseTest {
     @Test
     public void loginShouldSucceed2() {
         OverViewPage viewPage = pg.goTo(LoginPage.class)
-                .fillUsername("sqa1")
-                .fillPassword("sqa1")
+                .fillUsername(getUsername())
+                .fillPassword(getPassword())
                 .clickLoginBtn();
 
         Assert.assertTrue(viewPage.isLogOutLinkDisplayed());
