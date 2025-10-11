@@ -11,6 +11,7 @@ public class TransferFundsPage extends BasePage {
 
     public TransferFundsPage fillAmount(int amount) {
         getWebElement(By.id("amount")).sendKeys(String.valueOf(amount));
+        BatchThirteenUtil.waitForDomStable();
         return this;
     }
 

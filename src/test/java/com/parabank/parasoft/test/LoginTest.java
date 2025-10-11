@@ -53,7 +53,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
-    public void loginShouldSucceed() {
+    public void loginV1ShouldSucceed() {
         LoginPage lPage = pg.goTo(LoginPage.class);
         lPage = lPage
                 .fillUsername(getUsername())
@@ -65,11 +65,19 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
-    public void loginShouldSucceed2() {
+    public void loginV2ShouldSucceed() {
         OverViewPage viewPage = pg.goTo(LoginPage.class)
                 .fillUsername(getUsername())
                 .fillPassword(getPassword())
                 .clickLoginBtn();
+
+        Assert.assertTrue(viewPage.isLogOutLinkDisplayed());
+    }
+
+    @Test
+    public void loginV3ShouldSucceed() {
+        OverViewPage viewPage = pg.goTo(LoginPage.class)
+                .doLogin(getUsername(), getPassword());
 
         Assert.assertTrue(viewPage.isLogOutLinkDisplayed());
     }
