@@ -82,4 +82,8 @@ public class BaseTest {
         return prop.getProperty("password");
     }
 
+    public WebDriver getWebDriver(){
+        return driver;
+    }
+
 }

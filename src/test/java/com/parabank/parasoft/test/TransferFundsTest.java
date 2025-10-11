@@ -37,8 +37,8 @@ public class TransferFundsTest extends BaseTest {
                 .clickLoginBtn()
                 .clickTransferFundsLink()
                 .fillAmount(amount)
-                .selectFromAccount(1)
-                .selectToAccount(1)
+//                .selectFromAccount(1)
+//                .selectToAccount(1)
                 .clickTransferButton();
         Assert.assertTrue(transferCompletePg.isTransferComplete(amount));
     }
