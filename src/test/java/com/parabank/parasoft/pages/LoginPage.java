@@ -38,6 +38,11 @@ public class LoginPage extends BasePage {
         return this;
     }
 
+    public OverViewPage doLogin(String username, String password) {
+        return fillUsername(username)
+                .fillPassword(password)
+                .clickLoginBtn();
+    }
     public boolean isLoginErrorMessageDisplayed() {
         return getWebElementSize(By.cssSelector("p[class='error']")) > 0;
     }
