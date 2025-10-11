@@ -21,8 +21,6 @@ public class TransferFundsTest extends BaseTest {
         int amount = 1000;
         TransferCompletePage transferCompletePg = openNewAccountPg
                 .fillAmount(amount)
-                .selectFromAccount(0)
-                .selectToAccount(0)
                 .clickTransferButton();
 
         Assert.assertTrue(transferCompletePg.isTransferComplete(amount));
@@ -37,8 +35,19 @@ public class TransferFundsTest extends BaseTest {
                 .clickLoginBtn()
                 .clickTransferFundsLink()
                 .fillAmount(amount)
-//                .selectFromAccount(1)
-//                .selectToAccount(1)
+                .clickTransferButton();
+        Assert.assertTrue(transferCompletePg.isTransferComplete(amount));
+    }
+
+
+    @Test
+    public void transferFundsV3ShouldSucceed() {
+        int amount = 1000;
+        TransferCompletePage transferCompletePg = pg.goTo(LoginPage.class)
+                .clickRegisterLink()
+                .doRegister()
+                .clickTransferFundsLink()
+                .fillAmount(amount)
                 .clickTransferButton();
         Assert.assertTrue(transferCompletePg.isTransferComplete(amount));
     }

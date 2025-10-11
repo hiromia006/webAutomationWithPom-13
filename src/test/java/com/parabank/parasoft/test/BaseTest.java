@@ -2,14 +2,20 @@ package com.parabank.parasoft.test;
 
 import com.parabank.parasoft.pages.BasePage;
 import com.parabank.parasoft.pages.Page;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -69,7 +75,11 @@ public class BaseTest {
     }
 
     @AfterMethod
-    public void closeBrowser() {
+    public void closeBrowser(ITestResult result) {
+        System.out.println("Test " + result.getName() + " - " + (result.isSuccess() ? "PASSED" : "FAILED"));
+        if (ITestResult.FAILURE == result.getStatus()) {
+            takeScreenshot(result.getName());
+        }
         driver.quit();
     }
 
@@ -84,6 +94,20 @@ public class BaseTest {
 
     public WebDriver getWebDriver(){
         return driver;
+    }
+
+
+    public void takeScreenshot(String name) {
+        try {
+            File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            String currentDir = System.getProperty("user.dir") + "/build/screenshots/";
+            File destFile = new File(currentDir + name + "_" + System.currentTimeMillis() + ".png");
+            destFile.getParentFile().mkdirs();
+            FileUtils.copyFile(scrFile, destFile);
+            System.out.println("Screenshot saved at: " + destFile.getAbsolutePath());
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to capture screenshot: " + e.getMessage(), e);
+        }
     }
 
 }
