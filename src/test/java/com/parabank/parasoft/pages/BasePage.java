@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 public class BasePage extends Page {
